@@ -1,0 +1,59 @@
+link per richieste get tessera: http://accessi.mattiamorselli.it/core/arduino/controllo_badge.php
+
+uid = codice della tessera che legge l'rfid
+stanza = id del terminale (1 nel caso di quello di prova)
+
+Esempio di richiesta get: http://accessi.mattiamorselli.it/core/arduino/controllo_badge.php?stanza=NUMEROSTANZA&uid=CODICETESSERA
+
+cosa restituisce:
+
+ACCESSO_CONSENTITO se ha i permessi per accedere
+ACCESSO_NEGATO se non ha i permessi per accedere
+VARCO_DISABILITATO se il varco è stato disabilitato 
+MANUTENZIONE se la stanza è in modalità manutenzione e l'utente in questione non fa parte della lista addetti alla manutenzione
+UID_NON_FORNITO se l'uid non è stato fornito
+-----------------
+
+link per richieste verifica pin: http://accessi.mattiamorselli.it/core/arduino/controllo_pin.php
+
+pin = pin del tastierino
+stanza = id del terminale (1 nel caso di quello di prova)
+
+Esempio di richiesta get: http://accessi.mattiamorselli.it/core/arduino/controllo_pin.php?stanza=NUMEROSTANZA&pin=CODICEPIN
+
+cosa restituisce:
+
+ACCESSO_CONSENTITO se ha i permessi per accedere
+ACCESSO_NEGATO se non ha i permessi per accedere
+VARCO_DISABILITATO se il varco è stato disabilitato 
+MANUTENZIONE se la stanza è in modalità manutenzione e l'utente in questione non fa parte della lista addetti alla manutenzione
+UID_NON_FORNITO se l'uid non è stato fornito
+
+-----------------
+link per richieste cambio stato porta: http://accessi.mattiamorselli.it/core/arduino/stato_porta.php
+
+stanza = id del terminale (1 nel caso di quello di prova)
+stato = stato della porta che può essere
+- 0 = porta chiusa
+- 1 = porta aperta
+- 2 = porta aperta interno
+
+Esempio di richiesta get: http://accessi.mattiamorselli.it/core/arduino/stato_porta.php?stanza=NUMEROSTANZA&stato=STATOPORTA
+
+cosa restituisce:
+OK = se la pagina funziona e ha aggiunto l'evento
+
+-----------------
+
+link per richieste recupero badge offline: http://accessi.mattiamorselli.it/core/arduino/recupero_credenziali_offline.php
+
+
+stanza = id del terminale (1 nel caso di quello di prova)
+
+Esempio di richiesta get: http://accessi.mattiamorselli.it/core/arduino/recupero_credenziali_offline.php?stanza=NUMEROSTANZA
+
+cosa restituisce:
+Json con credenziali e pin autorizzati
+pins: array di pin
+uids: array di badge
+success: stato della richiesta
